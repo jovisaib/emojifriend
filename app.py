@@ -42,23 +42,23 @@ def top_elements(array, k):
 def home():
     return render_template("home.html")
 
-# @app.route('/emojize',methods=['GET'])
-# def emojize():
-#     text = str(request.args.get('text'))
-#     tokenized, _, _ = ST.tokenize_sentences([text])
-#     prob = MODEL(tokenized)[0]
+@app.route('/emojize',methods=['GET'])
+def emojize():
+    text = str(request.args.get('text'))
+    tokenized, _, _ = ST.tokenize_sentences([text])
+    prob = MODEL(tokenized)[0]
 
-#     emoji_ids = top_elements(prob, 10)
+    emoji_ids = top_elements(prob, 10)
 
-#     emojis = map(lambda x: EMOJIS[x], emoji_ids)
-#     emolist = list(emojis)
-#     return " ".join([emoji.emojize(x, use_aliases=True) for x in emolist ])
+    emojis = map(lambda x: EMOJIS[x], emoji_ids)
+    emolist = list(emojis)
+    return " ".join([emoji.emojize(x, use_aliases=True) for x in emolist ])
 
 if __name__ == '__main__':
-    # with open(VOCAB_PATH, 'r') as f:
-    #     VOCABULARY = json.load(f)
+    with open(VOCAB_PATH, 'r') as f:
+        VOCABULARY = json.load(f)
 
-    # ST = SentenceTokenizer(VOCABULARY, MAX_LEN)
-    # MODEL = torchmoji_emojis(PRETRAINED_PATH)
+    ST = SentenceTokenizer(VOCABULARY, MAX_LEN)
+    MODEL = torchmoji_emojis(PRETRAINED_PATH)
 
     app.run(debug=True)
