@@ -4,5 +4,4 @@ emoji
 numpy
 sklearn
 text_unidecode
-torch==1.7.0
 torch==1.8.0+cpu
