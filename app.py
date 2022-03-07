@@ -29,10 +29,15 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :angry: :no_good: :muscle: :facepunch: :purple_heart: \
 :sparkling_heart: :blue_heart: :grimacing: :sparkles:".split(' ')
 
-MAX_LEN = 500
+
 VOCABULARY = None
-MODEL = None
-ST = None
+with open(VOCAB_PATH, 'r') as f:
+    VOCABULARY = json.load(f)
+
+ST = SentenceTokenizer(VOCABULARY, MAX_LEN)
+MODEL = torchmoji_emojis(PRETRAINED_PATH)
+MAX_LEN = 500
+
 
 def top_elements(array, k):
     ind = np.argpartition(array, -k)[-k:]
@@ -55,10 +60,4 @@ def emojize():
     return " ".join([emoji.emojize(x, use_aliases=True) for x in emolist ])
 
 if __name__ == '__main__':
-    with open(VOCAB_PATH, 'r') as f:
-        VOCABULARY = json.load(f)
-
-    ST = SentenceTokenizer(VOCABULARY, MAX_LEN)
-    MODEL = torchmoji_emojis(PRETRAINED_PATH)
-
     app.run(debug=True)
