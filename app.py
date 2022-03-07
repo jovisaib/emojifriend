@@ -34,9 +34,9 @@ VOCABULARY = None
 with open(VOCAB_PATH, 'r') as f:
     VOCABULARY = json.load(f)
 
+MAX_LEN = 500
 ST = SentenceTokenizer(VOCABULARY, MAX_LEN)
 MODEL = torchmoji_emojis(PRETRAINED_PATH)
-MAX_LEN = 500
 
 
 def top_elements(array, k):
