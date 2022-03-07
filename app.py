@@ -3,7 +3,7 @@ import json
 
 from flask import Flask,request, render_template, jsonify
 import emoji
-
+import numpy as np
 
 from torchmoji.sentence_tokenizer import SentenceTokenizer
 from torchmoji.model_def import torchmoji_emojis
