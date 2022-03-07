@@ -1,0 +1,6 @@
+Flask==1.1.1
+emoji
+numpy
+sklearn
+text_unidecode
+torch
