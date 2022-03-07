@@ -1,14 +1,13 @@
 from __future__ import print_function, division, unicode_literals
-import json
+# import json
 
 from flask import Flask,request, render_template, jsonify
-import numpy as np
-import emoji
+# import emoji
 
 
-from torchmoji.sentence_tokenizer import SentenceTokenizer
-from torchmoji.model_def import torchmoji_emojis
-from torchmoji.global_variables import PRETRAINED_PATH, VOCAB_PATH
+# from torchmoji.sentence_tokenizer import SentenceTokenizer
+# from torchmoji.model_def import torchmoji_emojis
+# from torchmoji.global_variables import PRETRAINED_PATH, VOCAB_PATH
 
 
 # Initalise the Flask app
@@ -30,14 +29,14 @@ EMOJIS = ":joy: :unamused: :weary: :sob: :heart_eyes: \
 :angry: :no_good: :muscle: :facepunch: :purple_heart: \
 :sparkling_heart: :blue_heart: :grimacing: :sparkles:".split(' ')
 
-MAX_LEN = 500
-VOCABULARY = None
-MODEL = None
-ST = None
+# MAX_LEN = 500
+# VOCABULARY = None
+# MODEL = None
+# ST = None
 
-def top_elements(array, k):
-    ind = np.argpartition(array, -k)[-k:]
-    return ind[np.argsort(array[ind])][::-1]
+# def top_elements(array, k):
+#     ind = np.argpartition(array, -k)[-k:]
+#     return ind[np.argsort(array[ind])][::-1]
 
 @app.route('/')
 def home():
